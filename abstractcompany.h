@@ -4,16 +4,9 @@
 #include <QString>
 #include <QList>
 
-/*!
- * \brief The AbstractCompany class это абстрактный базовый класс, как в задании и надо
- */
-class AbstractCompany: public QObject
+class AbstractCompany
 {
-    Q_OBJECT
 public:
-    /*!
-     * \brief The CompanyType enum это перечисление для типов компаний
-     */
     enum CompanyType
     {
         HEAVY_INDUSTRY_COMPANY_TYPE = 1,
@@ -25,9 +18,9 @@ public:
         FINANCIAL_COMPANY_TYPE,
         COMPANY_TYPE_COUNT
     };
-    Q_ENUM(CompanyType)
+    static QStringList CompanyTypeNames;
 
-    explicit AbstractCompany(const QString& name, QObject* parent = nullptr);
+    explicit AbstractCompany(const QString& name);
 
     virtual ~AbstractCompany() {}
 

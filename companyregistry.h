@@ -3,13 +3,11 @@
 #include <QSharedPointer>
 #include "abstractcompany.h"
 
-/*!
- * \brief The CompanyRegistry class это реестр компаний, выполнен как синглтон Майерса
- */
+// Синглтон
 class CompanyRegistry
 {
 public:
-    static CompanyRegistry& Instance() // Кстати, есть мнение, что это антипаттерн
+    static CompanyRegistry& Instance()
     {
         static CompanyRegistry instance;
         return instance;
@@ -17,19 +15,8 @@ public:
 
     void addCompany(const QSharedPointer<AbstractCompany>& company);
 
-    /*!
-     * \brief getCompanyByIndex -- получить компанию по индексу
-     * \param index             -- индекс
-     * \return                  -- если индекс норм, то компания, иначе nullptr
-     */
     QSharedPointer<AbstractCompany> getCompanyByIndex(int index) const;
 
-    /*!
-     * \brief replaceCompanyByIndex -- изменяет компанию по индексу. Прочие изменяторы не имеют смысла из-за умного указателя
-     * \param index                 -- индекс
-     * \param newCompany            -- чем заменить
-     * \return                      -- если индекс норм, то true, иначе false
-     */
     bool replaceCompanyByIndex(int index, const QSharedPointer<AbstractCompany> newCompany);
 
     int getCompaniesCount() const;
